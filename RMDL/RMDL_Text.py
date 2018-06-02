@@ -1,3 +1,4 @@
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 RMDL: Random Multimodel Deep Learning for Classification
 
@@ -52,19 +53,19 @@ def Text_Classification(x_train, y_train, x_test,  y_test, batch_size=128,
     #  [0 1 0 0]
     #  [0 0 0 1]]
     
-    def one_hot_encoder(value, datal):
+    def one_hot_encoder(value, label_data_):
 
-        datal[value] = 1
+        label_data_[value] = 1
 
-        return datal
+        return label_data_
 
     def _one_hot_values(labels_data):
         encoded = [0] * len(labels_data)
 
-        for j, i in enumerate(labels_data):
+        for index_no, value in enumerate(labels_data):
             max_value = [0] * (np.max(labels_data) + 1)
 
-            encoded[j] = one_hot_encoder(i, max_value)
+            encoded[index_no] = one_hot_encoder(value, max_value)
 
         return np.array(encoded)
 
